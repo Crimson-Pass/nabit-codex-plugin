@@ -11,6 +11,8 @@ Check get_connection_status with clientVersion from this installed skill's exact
 
 Resolve the user's product from current conversation context and list_products/get_product. Use ../products/SKILL.md for lookup or management. Never pass scopeId="*" as a product. Do not ask again for facts already supplied. Send concise supported product facts, never the entire conversation history.
 
+Current matching requires workspace consent. If the connection is product-scoped, use setup to upgrade the requested range before requesting matching. After login, verify the range and continue the original request; use setup's continuation helper when the active host retains an older grant.
+
 ## Current product matching
 
 - get_recommendation_batch reads an existing batch. It may settle previously reserved credits and normal explanations; it does not start another batch.
@@ -21,6 +23,14 @@ Resolve the user's product from current conversation context and list_products/g
 - Fresh external-source research is a distinct capability; use ../research/SKILL.md when the user requests it. Do not automatically substitute it for published-Hook matching.
 
 Present returned titles/descriptions, viewing links, durations when known, reasons and useful adaptation constraints. Source footage is reference only; do not imply reuse rights or performance. get_video_details and request_video_analysis can support comparison; use ../library/SKILL.md for analysis, favorites and feedback.
+
+## Display real videos
+
+When a batch is complete, call render_video_recommendations with its returned productId and snapshotId; optionally pass selected hookIds. It renders playable reference cards in MCP UI hosts. It uses the existing batch and creates no new paid match. openUrl/videoPageUrl are viewing pages, not direct MP4s. Playback access is private UI metadata; never copy tickets into prose or invent thumbnails.
+
+If the host presents only text or cannot render MCP UI, use the bundled Codex helper to create a real playable local preview. Save `{productId,snapshotId,hookIds?}` as a JSON arguments file, then run `node /absolute/installed/plugin/scripts/codex-client.mjs preview /absolute/task/preview-args.json --output /absolute/task/nabit-videos.html`. Use a new output file; do not overwrite user files. Return a clickable absolute file link so the user can open the video gallery. Use the host's file/browser preview when available. These short-lived links need no browser Nabit login; regenerating the preview refreshes access without requesting another batch or charging it again. The preview is a way to view returned references, not a produced video.
+
+Keep title/reason/viewing links in the response as a text fallback. Do not claim an inline player appeared in a host unless it actually rendered. Browser viewing links preserve the reference through sign-in; an unauthorized account still cannot view another account's product.
 
 ## Daily digest
 

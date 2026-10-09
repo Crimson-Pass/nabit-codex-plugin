@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>Nabit 视频参考</title>
+<style>
+:root{color-scheme:light dark;font-family:system-ui,-apple-system,"PingFang SC",sans-serif;color:light-dark(#171717,#f5f5f3);background:light-dark(#fafaf9,#191919)}*{box-sizing:border-box}body{margin:0;padding:20px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.brand{font-size:19px;font-weight:750;letter-spacing:-.6px}.mark{display:inline-block;width:22px;height:22px;margin-right:7px;vertical-align:-4px}h1{font-size:18px;font-weight:600;margin:5px 0}p{margin:0;font-size:12px;line-height:1.65;color:light-dark(#73736d,#aaa)}button,.view{font:inherit;font-size:12px;border:1px solid light-dark(#deded8,#555);border-radius:7px;padding:8px 11px;background:transparent;color:inherit;cursor:pointer;text-decoration:none}button:disabled{opacity:.5;cursor:default}button:focus-visible,a:focus-visible{outline:2px solid #ee2f0c;outline-offset:3px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card{min-width:0;border:1px solid light-dark(#e5e5e0,#41413c);border-radius:13px;overflow:hidden;background:light-dark(#fff,#242422)}video{display:block;width:100%;height:285px;object-fit:contain;background:#0c0c0c}.detail{padding:14px}.type{display:inline-block;font-size:10px;padding:3px 7px;border-radius:5px;background:light-dark(#f3f3ef,#343430);margin-bottom:8px}.title{font-size:13px;line-height:1.6;font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0 0 8px}.reason{min-height:58px}.actions{display:flex;gap:8px;margin-top:14px;align-items:center}.duration{margin-left:auto;font-size:11px;color:light-dark(#85857d,#aaa)}.notice{margin-top:16px;font-size:11px}.error{color:light-dark(#a42b12,#ffac96);margin-top:9px}.status{margin:20px 0}#refresh{display:none}@media(max-width:500px){body{padding:14px}.grid{grid-template-columns:1fr 1fr;gap:10px}video{height:220px}.detail{padding:10px}.reason{font-size:11px}.actions{flex-wrap:wrap}.duration{margin-left:0}.title{font-size:12px}}@media(max-width:350px){.grid{grid-template-columns:1fr}}
+</style></head><body>
+<header><div><div class="brand"><svg class="mark" aria-hidden="true" viewBox="6 11 52 52">
+  <g fill="#EE2F0C">
+    <g transform="translate(27 60) rotate(-18) scale(.414) translate(-32 -97)"><path d="M32 2.4C36.2 13 44.6 23.2 46.2 41.4C47.6 58.6 41.4 74.2 32 97.2C22.6 74.2 16.4 58.6 17.8 41.4C19.4 23.2 27.8 13 32 2.4Z"/></g>
+    <g transform="translate(37 60) rotate(18) scale(.414) translate(-32 -97)"><path d="M32 2.4C36.2 13 44.6 23.2 46.2 41.4C47.6 58.6 41.4 74.2 32 97.2C22.6 74.2 16.4 58.6 17.8 41.4C19.4 23.2 27.8 13 32 2.4Z"/></g>
+    <g transform="translate(32 60) scale(.46) translate(-32 -97)"><path d="M32 2.4C36.2 13 44.6 23.2 46.2 41.4C47.6 58.6 41.4 74.2 32 97.2C22.6 74.2 16.4 58.6 17.8 41.4C19.4 23.2 27.8 13 32 2.4Z"/></g>
+  </g>
+</svg>nabit</div><h1>视频参考</h1><p id="subtitle">播放参考，了解它与你的产品如何连接。</p></div><button id="refresh" type="button">刷新播放链接</button></header>
+<p id="status" class="status" role="status">正在加载视频参考…</p><main id="grid" class="grid"></main><p class="notice">用于创意参考；素材使用权需另行确认。</p>
+<script>
+(()=>{
+ const pending=new Map();let seq=0,data=null,bridgeReady=false;
+ const grid=document.getElementById('grid'),status=document.getElementById('status'),refresh=document.getElementById('refresh');
+ const notify=(method,params)=>window.parent.postMessage({jsonrpc:'2.0',method,params},'*');
+ function request(method,params){return new Promise((resolve,reject)=>{const id=++seq,timer=setTimeout(()=>{pending.delete(id);reject(Error('操作暂时无法完成，请稍后重试。'));},15000);pending.set(id,{resolve,reject,timer});window.parent.postMessage({jsonrpc:'2.0',id,method,params},'*');});}
+ function safeUrl(raw,media=false){try{const u=new URL(raw);if(u.protocol!=='https:'||u.username||u.password)return '';if(media&&u.pathname!=='/api/codex/media')return '';return u.href;}catch{return '';}}
+ function unpack(result){if(result?.isError)throw Error('操作暂时无法完成，请稍后重试。');return result?._meta?.['nabit/widget']||result?.structuredContent||result;}
+ function text(tag,value,className){const el=document.createElement(tag);el.textContent=String(value||'');if(className)el.className=className;return el;}
+ function render(value){
+  if(!value||!Array.isArray(value.items))return;data=value;grid.replaceChildren();status.textContent=value.items.length?'':'这批没有可用的视频参考。';if(value.productName)document.getElementById('subtitle').textContent=value.productName+' · '+value.items.length+' 条视频参考';refresh.style.display=bridgeReady?'inline-block':'none';
+  const playback=new Map((value.playback||[]).map(p=>[p.hookId,p]));
+  for(const item of value.items.slice(0,8)){
+   const card=document.createElement('article');card.className='card';const media=playback.get(item.hookId),video=document.createElement('video');video.controls=true;video.playsInline=true;video.preload='metadata';
+   if(media){const src=safeUrl(media.mediaUrl,true),poster=safeUrl(media.posterUrl,true);if(src)video.src=src;if(poster)video.poster=poster;}
+   const detail=document.createElement('div');detail.className='detail';const type={direct_use:'直接使用',reshoot:'重拍参考',exploration:'创意探索'}[item.trace?.recommendationType]||'视频参考';detail.append(text('span',type,'type'),text('h2',item.title||item.description||'视频参考','title'),text('p',item.reason||item.trace?.bridge||'匹配解释正在准备。','reason'));
+   const actions=document.createElement('div');actions.className='actions';const url=safeUrl(item.openUrl);if(url){const link=text('a','在 Nabit 查看','view');link.href=url;link.target='_blank';link.rel='noopener noreferrer';actions.append(link);}
+   if(Number.isFinite(item.duration))actions.append(text('span',`${Math.round(item.duration*10)/10} 秒`,'duration'));detail.append(actions);
+   video.addEventListener('play',()=>{for(const other of grid.querySelectorAll('video'))if(other!==video)other.pause();});
+   video.addEventListener('error',()=>{if(!detail.querySelector('.error'))detail.append(text('p',bridgeReady?'播放链接可能已过期，请刷新后继续。':'播放链接可能已过期，请让 agent 刷新视频预览。','error'));});
+   card.append(video,detail);grid.append(card);
+  }
+  notify('ui/notifications/size-changed',{height:document.documentElement.scrollHeight});
+ }
+ window.addEventListener('message',event=>{
+  if(event.source!==window.parent)return;const m=event.data;if(!m||m.jsonrpc!=='2.0')return;
+  if(m.id!==undefined&&pending.has(m.id)){const p=pending.get(m.id);clearTimeout(p.timer);pending.delete(m.id);m.error?p.reject(Error(m.error.message||'操作失败')):p.resolve(m.result);return;}
+  if(m.method==='ui/notifications/tool-result')render(unpack(m.params));
+  if(m.method==='ui/notifications/host-context-changed'&&m.params?.theme)document.documentElement.style.colorScheme=m.params.theme;
+ });
+ window.addEventListener('openai:set_globals',event=>{const g=event.detail?.globals;if(g?.toolOutput)render(g.toolResponseMetadata?.['nabit/widget']||g.toolOutput);});
+ refresh.addEventListener('click',async()=>{if(!data)return;refresh.disabled=true;try{render(unpack(await request('tools/call',{name:'render_video_recommendations',arguments:{productId:data.productId,snapshotId:data.snapshotId,hookIds:data.items.map(i=>i.hookId)}})));}catch(e){status.textContent=e.message;}finally{refresh.disabled=false;}});
+ if(window.__NABIT_BOOTSTRAP__)render(window.__NABIT_BOOTSTRAP__);
+ else if(window.parent!==window){if(window.openai?.toolOutput)render(window.openai.toolResponseMetadata?.['nabit/widget']||window.openai.toolOutput);request('ui/initialize',{appInfo:{name:'Nabit Video References',version:'0.5.1'},appCapabilities:{availableDisplayModes:['inline']},protocolVersion:'2026-01-26'}).then(result=>{bridgeReady=true;notify('ui/notifications/initialized',{});if(result.hostContext?.theme)document.documentElement.style.colorScheme=result.hostContext.theme;if(data)refresh.style.display='inline-block';}).catch(()=>{if(window.openai?.toolOutput)render(window.openai.toolResponseMetadata?.['nabit/widget']||window.openai.toolOutput);else if(!data)status.textContent='请在支持插件界面的宿主中打开，或让 agent 生成可播放的预览。';});}
+ else status.textContent='请让 agent 生成这批视频的预览。';
+})();
+</script></body></html>

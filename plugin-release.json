@@ -1,9 +1,9 @@
 {
   "pluginName": "nabit-video-recommendation",
-  "latestVersion": "0.5.0",
+  "latestVersion": "0.5.1",
   "minimumSupportedVersion": "0.4.0",
   "publishedAt": "2026-10-09",
-  "summary": "Adds composable product, current matching, research, analysis, collection, settings and usage tools. Matching shares product credit settlement. New workspace consent enables management and paid actions; existing product-only grants retain their boundaries.",
+  "summary": "Adds credential-managed in-conversation continuation, sign-in return to video references, and playable MCP UI cards with short-lived scoped media access. Codex hosts without MCP UI can open a local video gallery. Matching and pricing are unchanged.",
   "updateUrl": "https://beta.nabit.ai/codex#updates",
   "downloadUrl": "https://beta.nabit.ai/codex/nabit-codex-beta.zip",
   "requiresReauthorization": false,

@@ -21,6 +21,7 @@ assert release['distribution']=='git-marketplace'
 assert release['automaticUpdates'] is False and release['requiresReauthorization'] is False
 assert mcp['mcpServers']=={'nabit':{'type':'streamable-http','url':'https://beta.nabit.ai/mcp'}}
 allowed={'.agents/plugins/marketplace.json','nabit-video-recommendation/plugin.json','nabit-video-recommendation/mcp.json','nabit-video-recommendation/skills/setup/SKILL.md','nabit-video-recommendation/skills/video-recommendation/SKILL.md',*[f'nabit-video-recommendation/skills/{name}/SKILL.md' for name in ['products','research','library','settings']],'nabit-video-recommendation/assets/nabit-logo.svg','nabit-video-recommendation/assets/nabit-mark.svg','plugin-release.json','README.md','.gitignore','scripts/validate.py','.github/workflows/validate.yml'}
+allowed.update({'nabit-video-recommendation/scripts/codex-client.mjs','nabit-video-recommendation/assets/video-widget.html','nabit-video-recommendation/skills/setup/references/continuation.md'})
 interface=manifest['extensions']['com.openai']['interface']
 for field in ['logo','logoDark','composerIcon','composerIconDark']:
     relative=interface[field]
@@ -41,4 +42,4 @@ for p in ROOT.rglob('*'):
 for name in ['setup','products','video-recommendation','research','library','settings']:
     content=(ROOT/f'nabit-video-recommendation/skills/{name}/SKILL.md').read_text()
     assert content.startswith('---\n') and '\nname: '+name+'\n' in content
-print(f'Validated Nabit {manifest["version"]}: one Git marketplace plugin, six skills, HTTPS OAuth MCP, no bundled runtime or credentials.')
+print(f'Validated Nabit {manifest["version"]}: one Git marketplace plugin, six skills, HTTPS OAuth MCP, optional credential-managed Codex helper and player asset; no user credentials.')

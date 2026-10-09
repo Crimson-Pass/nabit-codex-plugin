@@ -15,6 +15,10 @@ Costs use the existing Nabit product prices, credit holds, settlement, refunds, 
 
 Provide product facts in your current conversation, or ask the agent to use an existing Nabit product. Current matching uses `request_recommendations`, `get_recommendation_batch` and `next_recommendation_batch`. The older `get_video_recommendations` tool remains available for published research references. Daily digests read existing batches and do not start paid matching/research.
 
+## Playable references
+
+`render_video_recommendations` displays an existing completed batch in compatible MCP UI hosts. Video access is short-lived, limited to the returned references, and stops when the Nabit grant is revoked. Browsers preserve the viewing link through sign-in. Codex hosts without MCP UI can use the bundled helper to produce a playable local HTML gallery; the workflow skill supplies the exact command. Rendering or refreshing a gallery does not start another paid batch.
+
 ## Install from Git
 
 ```sh
@@ -22,7 +26,7 @@ codex plugin marketplace add https://github.com/Crimson-Pass/nabit-codex-plugin.
 codex plugin add nabit-video-recommendation@nabit-oauth
 ```
 
-The package requests authentication during installation. If your Codex client does not open that flow, invoke Nabit in a conversation: the plugin starts the native connection action or runs the Codex login command when shell access is available. You sign in, choose workspace or single-product access and approve permissions in the browser. Existing product-only grants remain restricted; product management and spending capabilities need explicit workspace consent. Only when the host cannot start it for you, run `codex mcp login nabit` manually. The plugin verifies the connection afterward; use a new conversation only if the current host cannot reload its tools. Installation does not grant account access or create a schedule.
+The package requests authentication during installation. If your Codex client does not open that flow, invoke Nabit in a conversation: the plugin starts the native connection action or runs the Codex login command when shell access is available. You sign in, choose workspace or single-product access and approve permissions in the browser. Existing product-only grants remain restricted; product management and spending capabilities need explicit workspace consent. Only when the host cannot start it for you, run `codex mcp login nabit` manually. The plugin verifies the connection afterward; when the host cannot reload its tools, the bundled credential-managed Codex helper can continue the original request in the same conversation. Installation does not grant account access or create a schedule.
 
 ## Update an existing Git installation
 
@@ -51,6 +55,6 @@ To use this extracted folder as a local marketplace instead, run `codex plugin m
 
 ## Connection help
 
-If the browser reports that 127.0.0.1 is blocked, check Codex's terminal result first. A successful login message means Codex received the callback; confirm it with a live connection check in a new conversation. Never paste callback URLs, tokens or passwords into chat. Do not use legacy connection.json files. Disable an older local Nabit plugin if it is still enabled.
+If the browser reports that 127.0.0.1 is blocked, check Codex's terminal result first. A successful login message means Codex received the callback; verify the required range with a live connection check; use the continuation helper if the current conversation retains an older grant. Never paste callback URLs, tokens or passwords into chat. Do not use legacy connection.json files. Disable an older local Nabit plugin if it is still enabled.
 
 Release details: https://beta.nabit.ai/codex#updates
