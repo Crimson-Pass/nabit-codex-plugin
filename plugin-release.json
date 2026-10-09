@@ -1,0 +1,20 @@
+{
+  "pluginName": "nabit-video-recommendation",
+  "latestVersion": "0.4.3",
+  "minimumSupportedVersion": "0.4.0",
+  "publishedAt": "2026-10-09",
+  "summary": "Moves the recommended installation to a Git marketplace, with explicit source refresh and upgrade commands. Existing OAuth authorization is preserved.",
+  "updateUrl": "https://beta.nabit.ai/codex#updates",
+  "downloadUrl": "https://beta.nabit.ai/codex/nabit-codex-beta.zip",
+  "requiresReauthorization": false,
+  "requiresNewConversation": true,
+  "distribution": "git-marketplace",
+  "marketplace": {
+    "name": "nabit-oauth",
+    "gitUrl": "https://github.com/mornz/nabit-codex-plugin.git",
+    "ref": "main",
+    "refreshCommand": "codex plugin marketplace upgrade nabit-oauth",
+    "installCommand": "codex plugin add nabit-video-recommendation@nabit-oauth"
+  },
+  "automaticUpdates": false
+}

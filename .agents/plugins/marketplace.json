@@ -1,0 +1,19 @@
+{
+  "name": "nabit-oauth",
+  "plugins": [
+    {
+      "name": "nabit-video-recommendation",
+      "source": {
+        "source": "local",
+        "path": "./nabit-video-recommendation"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "interface": {
+        "displayName": "Nabit Video Recommendations"
+      }
+    }
+  ]
+}

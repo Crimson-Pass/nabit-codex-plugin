@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "nabit": {
+      "type": "streamable-http",
+      "url": "https://beta.nabit.ai/mcp"
+    }
+  }
+}
