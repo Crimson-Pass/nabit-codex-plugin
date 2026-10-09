@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nabit-video-recommendation",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Recommend reviewed Nabit videos using a user's consented AI-interest profile and feedback.",
   "keywords": [
     "video",
@@ -26,7 +26,13 @@
           "Check my Nabit connection and recommend three video references for my connected product.",
           "Save this video as a preference and explain why it fits my work.",
           "Set up a weekday evening task for fresh Nabit video picks."
-        ]
+        ],
+        "logo": "./assets/nabit-logo.svg",
+        "logoDark": "./assets/nabit-mark.svg",
+        "composerIcon": "./assets/nabit-mark.svg",
+        "composerIconDark": "./assets/nabit-mark.svg",
+        "brandColor": "#EE2F0C",
+        "brandColorDark": "#EE2F0C"
       }
     }
   }

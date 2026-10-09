@@ -1,9 +1,9 @@
 {
   "pluginName": "nabit-video-recommendation",
-  "latestVersion": "0.4.4",
+  "latestVersion": "0.4.5",
   "minimumSupportedVersion": "0.4.0",
   "publishedAt": "2026-10-09",
-  "summary": "Moves the canonical Git plugin source to the Crimson-Pass company organization. Plugin identity, update commands and OAuth connection remain the same.",
+  "summary": "Adds the official Nabit flame logo to plugin cards and the composer, with light and dark assets included in every distributed package.",
   "updateUrl": "https://beta.nabit.ai/codex#updates",
   "downloadUrl": "https://beta.nabit.ai/codex/nabit-codex-beta.zip",
   "requiresReauthorization": false,

@@ -1,5 +1,5 @@
 """Validate the public, credential-free Git marketplace before publishing."""
-import json,re
+import json,re,xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -18,7 +18,17 @@ assert re.fullmatch(r'\d+\.\d+\.\d+',manifest['version'])
 assert release['distribution']=='git-marketplace'
 assert release['automaticUpdates'] is False and release['requiresReauthorization'] is False
 assert mcp['mcpServers']=={'nabit':{'type':'streamable-http','url':'https://beta.nabit.ai/mcp'}}
-allowed={'.agents/plugins/marketplace.json','nabit-video-recommendation/plugin.json','nabit-video-recommendation/mcp.json','nabit-video-recommendation/skills/setup/SKILL.md','nabit-video-recommendation/skills/video-recommendation/SKILL.md','plugin-release.json','README.md','.gitignore','scripts/validate.py','.github/workflows/validate.yml'}
+allowed={'.agents/plugins/marketplace.json','nabit-video-recommendation/plugin.json','nabit-video-recommendation/mcp.json','nabit-video-recommendation/skills/setup/SKILL.md','nabit-video-recommendation/skills/video-recommendation/SKILL.md','nabit-video-recommendation/assets/nabit-logo.svg','nabit-video-recommendation/assets/nabit-mark.svg','plugin-release.json','README.md','.gitignore','scripts/validate.py','.github/workflows/validate.yml'}
+interface=manifest['extensions']['com.openai']['interface']
+for field in ['logo','logoDark','composerIcon','composerIconDark']:
+    relative=interface[field]
+    assert relative.startswith('./assets/') and '..' not in Path(relative).parts
+    asset=ROOT/'nabit-video-recommendation'/relative
+    assert asset.is_file() and asset.stat().st_size<=5*1024*1024
+    svg=ET.fromstring(asset.read_text())
+    assert svg.tag=='{http://www.w3.org/2000/svg}svg'
+    box=[float(x) for x in svg.attrib['viewBox'].split()]
+    assert len(box)==4 and box[2]==box[3] and box[2]>=48
 for p in ROOT.rglob('*'):
     if '.git' in p.parts or '__pycache__' in p.parts:continue
     assert not p.is_symlink(),f'Symlinks are not part of this package: {p.name}'
