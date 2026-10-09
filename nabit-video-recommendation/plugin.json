@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nabit-video-recommendation",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "Recommend reviewed Nabit videos using a user's consented AI-interest profile and feedback.",
   "keywords": [
     "video",

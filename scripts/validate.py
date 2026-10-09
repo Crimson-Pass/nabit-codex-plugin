@@ -13,6 +13,8 @@ assert len(catalog['plugins'])==1
 entry=catalog['plugins'][0]
 assert entry['name']==manifest['name']=='nabit-video-recommendation'
 assert entry['source']=={'source':'local','path':'./nabit-video-recommendation'}
+assert entry['policy']['authentication']=='ON_INSTALL'
+assert entry['category']=='Productivity'
 assert manifest['version']==release['latestVersion']
 assert re.fullmatch(r'\d+\.\d+\.\d+',manifest['version'])
 assert release['distribution']=='git-marketplace'

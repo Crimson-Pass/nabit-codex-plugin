@@ -5,10 +5,9 @@
 ```sh
 codex plugin marketplace add https://github.com/Crimson-Pass/nabit-codex-plugin.git --ref main
 codex plugin add nabit-video-recommendation@nabit-oauth
-codex mcp login nabit
 ```
 
-Sign in to Nabit in the browser, select your product and approve the disclosed permissions. Wait for Codex to confirm login, then start a new conversation. Installing the plugin does not grant account access or create a schedule.
+The package requests authentication during installation. If your Codex client does not open that flow, invoke Nabit in a conversation: the plugin starts the native connection action or runs the Codex login command when shell access is available. You sign in, select the product and approve permissions in the browser. Only when the host cannot start it for you, run `codex mcp login nabit` manually. The plugin verifies the connection afterward; use a new conversation only if the current host cannot reload its tools. Installation does not grant account access or create a schedule.
 
 ## Update an existing Git installation
 
