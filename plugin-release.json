@@ -1,9 +1,9 @@
 {
   "pluginName": "nabit-video-recommendation",
-  "latestVersion": "0.4.6",
+  "latestVersion": "0.5.0",
   "minimumSupportedVersion": "0.4.0",
   "publishedAt": "2026-10-09",
-  "summary": "Starts the connection flow when users invoke Nabit interactively, instead of only printing a terminal command. Browser consent remains with the user; unattended tasks never launch login.",
+  "summary": "Adds composable product, current matching, research, analysis, collection, settings and usage tools. Matching shares product credit settlement. New workspace consent enables management and paid actions; existing product-only grants retain their boundaries.",
   "updateUrl": "https://beta.nabit.ai/codex#updates",
   "downloadUrl": "https://beta.nabit.ai/codex/nabit-codex-beta.zip",
   "requiresReauthorization": false,
@@ -16,5 +16,6 @@
     "refreshCommand": "codex plugin marketplace upgrade nabit-oauth",
     "installCommand": "codex plugin add nabit-video-recommendation@nabit-oauth"
   },
-  "automaticUpdates": false
+  "automaticUpdates": false,
+  "workspaceConsentRequiredForNewCapabilities": true
 }

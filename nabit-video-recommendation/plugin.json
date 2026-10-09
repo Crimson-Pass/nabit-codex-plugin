@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nabit-video-recommendation",
-  "version": "0.4.6",
-  "description": "Recommend reviewed Nabit videos using a user's consented AI-interest profile and feedback.",
+  "version": "0.5.0",
+  "description": "Composable Nabit product, video recommendation, research, analysis and collection capabilities for host agents; uses existing product credit rules.",
   "keywords": [
     "video",
     "recommendations",
@@ -15,7 +15,7 @@
       "interface": {
         "displayName": "Nabit Video Recommendations",
         "shortDescription": "Personalized Nabit video picks",
-        "longDescription": "Use Nabit's reviewed video pool and a consented interest profile to deliver useful, non-repeating recommendations in Codex and ChatGPT.",
+        "longDescription": "Use product context to find video references, manage products, run recommendation research, inspect analysis and organize collections. Your agent orchestrates Nabit skills and tools. Costs follow Nabit product pricing. Video production is not included.",
         "developerName": "Nabit",
         "category": "Productivity",
         "capabilities": [
@@ -23,9 +23,9 @@
           "Write"
         ],
         "defaultPrompt": [
-          "Check my Nabit connection and recommend three video references for my connected product.",
-          "Save this video as a preference and explain why it fits my work.",
-          "Set up a weekday evening task for fresh Nabit video picks."
+          "Use the product information in this conversation to find useful Nabit video references.",
+          "Compare these video references and save the best fit to my Nabit collection.",
+          "Show my Nabit credits and configure the product recommendation schedule I request."
         ],
         "logo": "./assets/nabit-logo.svg",
         "logoDark": "./assets/nabit-mark.svg",

@@ -1,4 +1,19 @@
-# Nabit Video Recommendations
+# Nabit Video Recommendations 0.5.0
+
+Six workflow skills and 32 composable MCP tools for product management, current video matching, source research, analysis, collections, feedback, scheduling and usage. Your host agent understands the task and orchestrates the capabilities. Video production is not included.
+
+Costs use the existing Nabit product prices, credit holds, settlement, refunds, quotas and research budgets. No separate plugin wallet or surcharge is introduced. Existing product-only links keep their original boundaries; management and paid matching/research require explicit workspace consent. Ordinary updates preserve authorization. Reauthorize for workspace access only when you request a capability requiring that upgrade.
+
+## Workflow skills
+
+- `setup`: account connection, permission range and software updates.
+- `products`: product context, lookup and product management.
+- `video-recommendation`: current matching batches, comparisons and daily digests.
+- `research`: fresh source research and product trending tracking.
+- `library`: details, explanations, collections and explicit feedback.
+- `settings`: usage, research/email settings and host scheduling.
+
+Provide product facts in your current conversation, or ask the agent to use an existing Nabit product. Current matching uses `request_recommendations`, `get_recommendation_batch` and `next_recommendation_batch`. The older `get_video_recommendations` tool remains available for published research references. Daily digests read existing batches and do not start paid matching/research.
 
 ## Install from Git
 
@@ -7,7 +22,7 @@ codex plugin marketplace add https://github.com/Crimson-Pass/nabit-codex-plugin.
 codex plugin add nabit-video-recommendation@nabit-oauth
 ```
 
-The package requests authentication during installation. If your Codex client does not open that flow, invoke Nabit in a conversation: the plugin starts the native connection action or runs the Codex login command when shell access is available. You sign in, select the product and approve permissions in the browser. Only when the host cannot start it for you, run `codex mcp login nabit` manually. The plugin verifies the connection afterward; use a new conversation only if the current host cannot reload its tools. Installation does not grant account access or create a schedule.
+The package requests authentication during installation. If your Codex client does not open that flow, invoke Nabit in a conversation: the plugin starts the native connection action or runs the Codex login command when shell access is available. You sign in, choose workspace or single-product access and approve permissions in the browser. Existing product-only grants remain restricted; product management and spending capabilities need explicit workspace consent. Only when the host cannot start it for you, run `codex mcp login nabit` manually. The plugin verifies the connection afterward; use a new conversation only if the current host cannot reload its tools. Installation does not grant account access or create a schedule.
 
 ## Update an existing Git installation
 

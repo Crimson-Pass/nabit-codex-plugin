@@ -20,7 +20,7 @@ assert re.fullmatch(r'\d+\.\d+\.\d+',manifest['version'])
 assert release['distribution']=='git-marketplace'
 assert release['automaticUpdates'] is False and release['requiresReauthorization'] is False
 assert mcp['mcpServers']=={'nabit':{'type':'streamable-http','url':'https://beta.nabit.ai/mcp'}}
-allowed={'.agents/plugins/marketplace.json','nabit-video-recommendation/plugin.json','nabit-video-recommendation/mcp.json','nabit-video-recommendation/skills/setup/SKILL.md','nabit-video-recommendation/skills/video-recommendation/SKILL.md','nabit-video-recommendation/assets/nabit-logo.svg','nabit-video-recommendation/assets/nabit-mark.svg','plugin-release.json','README.md','.gitignore','scripts/validate.py','.github/workflows/validate.yml'}
+allowed={'.agents/plugins/marketplace.json','nabit-video-recommendation/plugin.json','nabit-video-recommendation/mcp.json','nabit-video-recommendation/skills/setup/SKILL.md','nabit-video-recommendation/skills/video-recommendation/SKILL.md',*[f'nabit-video-recommendation/skills/{name}/SKILL.md' for name in ['products','research','library','settings']],'nabit-video-recommendation/assets/nabit-logo.svg','nabit-video-recommendation/assets/nabit-mark.svg','plugin-release.json','README.md','.gitignore','scripts/validate.py','.github/workflows/validate.yml'}
 interface=manifest['extensions']['com.openai']['interface']
 for field in ['logo','logoDark','composerIcon','composerIconDark']:
     relative=interface[field]
@@ -38,7 +38,7 @@ for p in ROOT.rglob('*'):
     name=p.relative_to(ROOT).as_posix()
     assert name in allowed,f'Unexpected public file: {name}'
     assert not re.search(r'nabit_o(?:at|rt)_[a-f0-9]{64}|gh[pousr]_[A-Za-z0-9]{30,}|(?m:^-----BEGIN [A-Z ]*PRIVATE KEY-----$)',p.read_text()),f'Credential-like content: {name}'
-for name in ['setup','video-recommendation']:
+for name in ['setup','products','video-recommendation','research','library','settings']:
     content=(ROOT/f'nabit-video-recommendation/skills/{name}/SKILL.md').read_text()
     assert content.startswith('---\n') and '\nname: '+name+'\n' in content
-print(f'Validated Nabit {manifest["version"]}: one Git marketplace plugin, two skills, HTTPS OAuth MCP, no bundled runtime or credentials.')
+print(f'Validated Nabit {manifest["version"]}: one Git marketplace plugin, six skills, HTTPS OAuth MCP, no bundled runtime or credentials.')
