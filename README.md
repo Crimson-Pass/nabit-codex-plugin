@@ -3,7 +3,7 @@
 ## Install from Git
 
 ```sh
-codex plugin marketplace add https://github.com/mornz/nabit-codex-plugin.git --ref main
+codex plugin marketplace add https://github.com/Crimson-Pass/nabit-codex-plugin.git --ref main
 codex plugin add nabit-video-recommendation@nabit-oauth
 codex mcp login nabit
 ```
@@ -19,13 +19,13 @@ codex plugin add nabit-video-recommendation@nabit-oauth
 
 The first command refreshes the source. The second installs the refreshed package. Check the version reported by the install command, then start a new conversation. Updates are user-triggered, not silent automatic installs. They preserve existing OAuth authorization; sign in again only if authentication fails.
 
-## Migrate the older downloaded local source
+## Migrate an older source
 
-First check `codex plugin marketplace list --json`. If `nabit-oauth` uses a local folder, run:
+First check `codex plugin marketplace list --json`. If `nabit-oauth` uses a local folder or the previous personal Git URL, run:
 
 ```sh
 codex plugin marketplace remove nabit-oauth
-codex plugin marketplace add https://github.com/mornz/nabit-codex-plugin.git --ref main
+codex plugin marketplace add https://github.com/Crimson-Pass/nabit-codex-plugin.git --ref main
 codex plugin add nabit-video-recommendation@nabit-oauth
 ```
 
