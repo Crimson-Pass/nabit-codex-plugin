@@ -1,9 +1,9 @@
 {
   "pluginName": "nabit-video-recommendation",
-  "latestVersion": "0.5.1",
+  "latestVersion": "0.5.2",
   "minimumSupportedVersion": "0.4.0",
-  "publishedAt": "2026-10-09",
-  "summary": "Adds credential-managed in-conversation continuation, sign-in return to video references, and playable MCP UI cards with short-lived scoped media access. Codex hosts without MCP UI can open a local video gallery. Matching and pricing are unchanged.",
+  "publishedAt": "2026-10-10",
+  "summary": "Opens Beta sign-in for ordinary verified accounts. Recommendations use available credits without requiring a subscription; insufficient credits report the shortfall and account recharge page. Existing settled batches remain viewable.",
   "updateUrl": "https://beta.nabit.ai/codex#updates",
   "downloadUrl": "https://beta.nabit.ai/codex/nabit-codex-beta.zip",
   "requiresReauthorization": false,

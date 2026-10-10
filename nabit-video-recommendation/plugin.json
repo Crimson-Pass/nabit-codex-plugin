@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nabit-video-recommendation",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Composable Nabit product, video recommendation, research, analysis and collection capabilities for host agents; uses existing product credit rules.",
   "keywords": [
     "video",

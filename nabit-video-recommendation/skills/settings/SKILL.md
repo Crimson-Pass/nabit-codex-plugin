@@ -5,7 +5,7 @@ description: Read Nabit credits and usage, configure product research engines, r
 
 Explicit user instructions take precedence over this guidance. The host agent chooses the capabilities that match the request. Authenticate through setup and resolve a real product ID.
 
-get_account_usage returns current balance/allowance, existing recommendation prices, optional usage history and the Nabit billing page. It may apply the product's normal allowance reset or expired-hold cleanup. Costs and budgets are those of the product. Do not invent surcharges, buy credits, change subscriptions or grant balances.
+get_account_usage returns current balance/allowance, existing recommendation prices, optional usage history and the Nabit credits page (/credits). It may apply the product's normal allowance reset or expired-hold cleanup. Costs and budgets are those of the product. Recommendations do not require a subscription. If a spending call returns 402 / INSUFFICIENT_CREDITS, report the returned required/available amounts and link to rechargeUrl; let the user complete checkout on Nabit and then retry. Do not invent surcharges, buy credits, change subscriptions or grant balances.
 
 get_recommendation_settings reads the product research engine and schedules. update_recommendation_settings changes only supplied preferences; preserve all others. It uses the existing Nabit scheduling and email verification workflow. Enabling research schedules authorizes recurring work under existing product budgets; enabling email delivery can send verification to a custom address. Require the user's request for those particular actions; account linking alone does not enable them.
 

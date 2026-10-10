@@ -1,6 +1,6 @@
-# Nabit Video Recommendations 0.5.0
+# Nabit Video Recommendations 0.5.2
 
-Six workflow skills and 32 composable MCP tools for product management, current video matching, source research, analysis, collections, feedback, scheduling and usage. Your host agent understands the task and orchestrates the capabilities. Video production is not included.
+Six workflow skills and 33 composable MCP tools for product management, current video matching, source research, analysis, collections, feedback, scheduling and usage. Your host agent understands the task and orchestrates the capabilities. Video production is not included.
 
 Costs use the existing Nabit product prices, credit holds, settlement, refunds, quotas and research budgets. No separate plugin wallet or surcharge is introduced. Existing product-only links keep their original boundaries; management and paid matching/research require explicit workspace consent. Ordinary updates preserve authorization. Reauthorize for workspace access only when you request a capability requiring that upgrade.
 
@@ -58,3 +58,5 @@ To use this extracted folder as a local marketplace instead, run `codex plugin m
 If the browser reports that 127.0.0.1 is blocked, check Codex's terminal result first. A successful login message means Codex received the callback; verify the required range with a live connection check; use the continuation helper if the current conversation retains an older grant. Never paste callback URLs, tokens or passwords into chat. Do not use legacy connection.json files. Disable an older local Nabit plugin if it is still enabled.
 
 Release details: https://beta.nabit.ai/codex#updates
+
+Verified ordinary accounts can sign in at https://beta.nabit.ai/auth and authorize their own workspace. Recommendation matching uses available credits without requiring a subscription. Insufficient credits return HTTP 402, required/available amounts and https://beta.nabit.ai/credits. The agent provides the link; the user completes any recharge themselves. Reading an already settled batch does not charge again. The Beta credits page shows whether online recharge is configured.
