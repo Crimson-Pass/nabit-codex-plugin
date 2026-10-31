@@ -1,0 +1,31 @@
+{
+  "name": "Nabit Video Recommendations",
+  "version": "0.5.4",
+  "description": "Match products to human-reviewed 0–3s short-form video hooks, frame-level opening breakdowns, trend tracking, and creative collections via Nabit's OAuth 2.1 Streamable HTTP MCP server.",
+  "logo": "https://nabit.ai/assets/nabit-brand/nabit-icon-400.png",
+  "homepage": "https://nabit.ai/codex",
+  "repository": "https://github.com/Crimson-Pass/nabit-codex-plugin",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "video",
+    "marketing",
+    "hooks",
+    "tiktok",
+    "reels",
+    "shorts",
+    "ecommerce",
+    "nabit"
+  ],
+  "author": {
+    "name": "Nabit",
+    "url": "https://nabit.ai",
+    "email": "support@nabit.ai"
+  },
+  "plugins": [
+    {
+      "name": "nabit-video-recommendation",
+      "source": "nabit-video-recommendation"
+    }
+  ]
+}
