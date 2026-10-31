@@ -1,19 +1,19 @@
-# Nabit Video Recommendations 0.5.4
+# Nabit Video Recommendations 0.5.5
 
-Six workflow skills and 33 composable MCP tools for product management, short-form video hook matching, source research, opening analysis, collections, feedback, scheduling, and credit usage — powered by [Nabit](https://nabit.ai) over remote Streamable HTTP MCP (`https://nabit.ai/mcp`) with OAuth 2.1 + PKCE. Your host agent understands the task and orchestrates the capabilities. Video production is not included.
+Six workflow skills and 31 composable MCP tools for product management, short-form video hook matching, trend tracking, opening analysis, collections, feedback, scheduling, and credit usage — powered by [Nabit](https://nabit.ai) over remote Streamable HTTP MCP (`https://nabit.ai/mcp`) with OAuth 2.1 + PKCE. Your host agent understands the task and orchestrates the capabilities. Video production is not included.
 
-Costs use the existing Nabit product prices, credit holds, settlement, refunds, quotas, and research budgets. No separate plugin wallet or surcharge is introduced. Existing product-only links keep their original boundaries; management and paid matching/research require explicit workspace consent. Ordinary updates preserve authorization. Reauthorize for workspace access only when you request a capability requiring that upgrade.
+Costs use the existing Nabit product prices, credit holds, settlement, refunds, quotas, and update budgets. No separate plugin wallet or surcharge is introduced. Existing product-only links keep their original boundaries; management and paid matching require explicit workspace consent. Ordinary updates preserve authorization. Reauthorize for workspace access only when you request a capability requiring that upgrade.
 
 ## Workflow skills
 
 - `setup`: account connection, permission range, and software updates.
 - `products`: product context, URL preview, lookup, and product management.
 - `video-recommendation`: current matching batches, comparisons, and daily digests.
-- `research`: fresh source research and product trending tracking.
+- `trending`: existing product trends and requested tracking.
 - `library`: details, opening explanations, collections, and explicit feedback.
-- `settings`: usage, research/email settings, and host scheduling.
+- `settings`: usage, update/email settings, and host scheduling.
 
-Provide product facts in your current conversation, or ask the agent to use an existing Nabit product. Current matching uses `request_recommendations`, `get_recommendation_batch`, and `next_recommendation_batch`. The older `get_video_recommendations` tool remains available for published research references. Daily digests read existing batches and do not start paid matching/research.
+Provide product facts in your current conversation, or ask the agent to use an existing Nabit product. Current matching uses `request_recommendations`, `get_recommendation_batch`, and `next_recommendation_batch`. The compatibility `get_video_recommendations` tool reads the current existing matching batch, with a limit and exclusions. It requires workspace consent; old product-only grants receive WORKSPACE_CONSENT_REQUIRED instead of a misleading empty list. Daily digests read existing batches and do not start paid matching.
 
 ## Playable references
 
@@ -26,7 +26,7 @@ codex plugin marketplace add https://github.com/Crimson-Pass/nabit-codex-plugin.
 codex plugin add nabit-video-recommendation@nabit-oauth
 ```
 
-The package requests authentication during installation. If your Codex client does not open that flow, invoke Nabit in a conversation: the plugin starts the native connection action or runs the Codex login command when shell access is available. You sign in to your Nabit account, choose workspace or single-product access, and approve permissions in the browser. Existing product-only grants remain restricted; product management and spending capabilities need explicit workspace consent. Only when the host cannot start it for you, run `codex mcp login nabit` manually. The plugin verifies the connection afterward; when the host cannot reload its tools, the bundled credential-managed Codex helper can continue the original request in the same conversation. Installation does not grant account access or create a schedule.
+The package requests authentication during installation. If your Codex client does not open that flow, invoke Nabit in a conversation: the plugin starts the native connection action or runs the Codex login command when shell access is available. You sign in to your Nabit account, approve current workspace access, and approve permissions in the browser. Existing product-only grants remain restricted; product management and spending capabilities need explicit workspace consent. Only when the host cannot start it for you, run `codex mcp login nabit` manually. The plugin verifies the connection afterward; when the host cannot reload its tools, the bundled credential-managed Codex helper can continue the original request in the same conversation. Installation does not grant account access or create a schedule.
 
 ## Connect via Streamable HTTP MCP (Claude Code, Cursor, VS Code, Codex)
 
@@ -60,7 +60,7 @@ codex plugin marketplace upgrade nabit-oauth
 codex plugin add nabit-video-recommendation@nabit-oauth
 ```
 
-The first command refreshes the source. The second installs the refreshed package. Check the version reported by the install command, then start a new conversation. Updates are user-triggered, not silent automatic installs. They preserve existing OAuth authorization; sign in again only if authentication fails.
+The first command refreshes the source. The second installs the refreshed package. Check the version reported by the install command, then start a new conversation. Updates are user-triggered, not silent automatic installs. They preserve existing OAuth authorization; sign in again if authentication fails or a legacy product grant needs an explicit workspace upgrade for current recommendations, credits or trends.
 
 ## Migrate an older source
 
@@ -84,7 +84,7 @@ If the browser reports that `127.0.0.1` is unreachable after approval, check you
 
 Release details: https://nabit.ai/codex#updates
 
-Ordinary verified Nabit accounts can sign in at https://nabit.ai/auth and authorize their own workspace. Connecting and inspecting products do not require a paid subscription; recommendation matching uses available credits. Insufficient credits return HTTP 402 with the required/available amounts and https://nabit.ai/credits. The agent provides the link; the user completes any recharge themselves. Reading an already settled batch does not charge again.
+Ordinary verified Nabit accounts can sign in at https://nabit.ai/auth and authorize their own workspace. Connecting is free; using business tools, including inspecting products, requires an active workspace trial or subscription; recommendation matching uses available credits. Insufficient credits return HTTP 402 with the required/available amounts and https://nabit.ai/credits. The agent provides the link; the user completes any recharge themselves. Reading an already settled batch does not charge again.
 
 ## Resources & Documentation
 
@@ -97,3 +97,7 @@ Ordinary verified Nabit accounts can sign in at https://nabit.ai/auth and author
 ## License
 
 MIT — see [LICENSE](./LICENSE).
+
+## 0.5.5 changes
+
+Retired source-research tools have been removed (31 tools remain). New browser connections explicitly request workspace access. Existing product grants keep their original scope and must reconnect to use current matching, credits or trends. The compatibility recommendation reader now uses the current matching batch. A missing trial or subscription is reported as plan_required on an authenticated connection; it is not a failed login.

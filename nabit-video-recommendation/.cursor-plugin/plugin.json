@@ -1,6 +1,6 @@
 {
   "name": "nabit-video-recommendation",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Match products to human-reviewed 0–3s short-form video hooks, frame-level opening breakdowns, trend tracking, and creative collections via Nabit's OAuth 2.1 Streamable HTTP MCP server.",
   "logo": "https://nabit.ai/assets/nabit-brand/nabit-icon-400.png",
   "homepage": "https://nabit.ai/codex",

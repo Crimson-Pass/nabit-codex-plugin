@@ -23,7 +23,7 @@ assert release['distribution']=='git-marketplace'
 assert release['automaticUpdates'] is False and release['requiresReauthorization'] is False
 assert mcp['mcpServers']=={'nabit':{'type':'streamable-http','url':'https://nabit.ai/mcp'}}
 assert codex_mcp=={'mcpServers':{'nabit':{'type':'http','url':'https://nabit.ai/mcp'}}}
-allowed={'.agents/plugins/marketplace.json','nabit-video-recommendation/plugin.json','nabit-video-recommendation/.codex-plugin/plugin.json','nabit-video-recommendation/mcp.json','nabit-video-recommendation/.mcp.json','nabit-video-recommendation/skills/setup/SKILL.md','nabit-video-recommendation/skills/video-recommendation/SKILL.md',*[f'nabit-video-recommendation/skills/{name}/SKILL.md' for name in ['products','research','library','settings']],'nabit-video-recommendation/assets/nabit-logo.svg','nabit-video-recommendation/assets/nabit-mark.svg','plugin-release.json','README.md','.gitignore','scripts/validate.py','.github/workflows/validate.yml'}
+allowed={'.agents/plugins/marketplace.json','nabit-video-recommendation/plugin.json','nabit-video-recommendation/.codex-plugin/plugin.json','nabit-video-recommendation/mcp.json','nabit-video-recommendation/.mcp.json','nabit-video-recommendation/skills/setup/SKILL.md','nabit-video-recommendation/skills/video-recommendation/SKILL.md',*[f'nabit-video-recommendation/skills/{name}/SKILL.md' for name in ['products','trending','library','settings']],'nabit-video-recommendation/assets/nabit-logo.svg','nabit-video-recommendation/assets/nabit-mark.svg','plugin-release.json','README.md','.gitignore','scripts/validate.py','.github/workflows/validate.yml'}
 allowed.update({'nabit-video-recommendation/scripts/codex-client.mjs','nabit-video-recommendation/assets/video-widget.html','nabit-video-recommendation/skills/setup/references/continuation.md','LICENSE','glama.json','server.json','.cursor-plugin/plugin.json','nabit-video-recommendation/.cursor-plugin/plugin.json'})
 interface=manifest['extensions']['com.openai']['interface']
 for field in ['logo','logoDark','composerIcon','composerIconDark']:
@@ -42,7 +42,7 @@ for p in ROOT.rglob('*'):
     name=p.relative_to(ROOT).as_posix()
     assert name in allowed,f'Unexpected public file: {name}'
     assert not re.search(r'nabit_o(?:at|rt)_[a-f0-9]{64}|gh[pousr]_[A-Za-z0-9]{30,}|(?m:^-----BEGIN [A-Z ]*PRIVATE KEY-----$)',p.read_text()),f'Credential-like content: {name}'
-for name in ['setup','products','video-recommendation','research','library','settings']:
+for name in ['setup','products','video-recommendation','trending','library','settings']:
     content=(ROOT/f'nabit-video-recommendation/skills/{name}/SKILL.md').read_text()
     assert content.startswith('---\n') and '\nname: '+name+'\n' in content
 print(f'Validated Nabit {manifest["version"]}: one Git marketplace plugin, six skills, HTTPS OAuth MCP, optional credential-managed Codex helper and player asset; no user credentials.')

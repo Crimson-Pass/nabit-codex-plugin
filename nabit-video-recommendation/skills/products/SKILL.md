@@ -15,4 +15,4 @@ update_product preserves omitted fields. Read the current product and change onl
 
 archive_product hides a product and retains its data; restore_product reverses it. Use these only for an explicit removal/restoration request. Archive does not imply cancellation of every independently configured schedule; inspect settings/tracking when the user asks to stop future work.
 
-Use the returned product ID with recommendation, research and collection tools. No video creation or production assets are exposed.
+Use the returned product ID with recommendation, trends and collection tools. No video creation or production assets are exposed.

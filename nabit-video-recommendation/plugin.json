@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nabit-video-recommendation",
-  "version": "0.5.4",
-  "description": "Composable Nabit product, video recommendation, research, analysis and collection capabilities for host agents; uses existing product credit rules.",
+  "version": "0.5.5",
+  "description": "Composable Nabit product, video recommendation, trends, analysis and collection capabilities for host agents; uses existing product credit rules.",
   "keywords": [
     "video",
     "recommendations",
@@ -15,7 +15,7 @@
       "interface": {
         "displayName": "Nabit Video Recommendations",
         "shortDescription": "Personalized Nabit video picks",
-        "longDescription": "Use product context to find video references, manage products, run recommendation research, inspect analysis and organize collections. Your agent orchestrates Nabit skills and tools. Costs follow Nabit product pricing. Video production is not included.",
+        "longDescription": "Use product context to find video references, manage products, run recommendation matching, inspect analysis and organize collections. Your agent orchestrates Nabit skills and tools. Costs follow Nabit product pricing. Video production is not included.",
         "developerName": "Nabit",
         "category": "Productivity",
         "capabilities": [
