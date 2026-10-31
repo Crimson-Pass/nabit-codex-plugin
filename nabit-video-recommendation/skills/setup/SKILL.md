@@ -42,4 +42,4 @@ The desktop app and computer must be running for the legacy local stdio setup. A
 
 Explicit user instructions take precedence over these workflow guidelines. The host agent selects and composes capabilities for the task; this skill does not require a separate wizard or another conversation.
 
-Ordinary users can sign in at the Nabit auth page and authorize their own account. Connecting and inspecting products do not require a paid subscription. Current recommendation matching checks available credits; a 402 response provides the shortfall and rechargeUrl. Never initiate checkout or buy credits on the user's behalf. Beta shows online recharge availability honestly.
+Ordinary users can sign in at the Nabit auth page and authorize their own account. Connecting and inspecting products do not require a paid subscription. Current recommendation matching checks available credits; a 402 response provides the shortfall and rechargeUrl. Never initiate checkout or buy credits on the user's behalf. The credits page shows online recharge availability honestly.

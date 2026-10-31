@@ -19,7 +19,7 @@ assert manifest['version']==release['latestVersion']
 assert re.fullmatch(r'\d+\.\d+\.\d+',manifest['version'])
 assert release['distribution']=='git-marketplace'
 assert release['automaticUpdates'] is False and release['requiresReauthorization'] is False
-assert mcp['mcpServers']=={'nabit':{'type':'streamable-http','url':'https://beta.nabit.ai/mcp'}}
+assert mcp['mcpServers']=={'nabit':{'type':'streamable-http','url':'https://nabit.ai/mcp'}}
 allowed={'.agents/plugins/marketplace.json','nabit-video-recommendation/plugin.json','nabit-video-recommendation/mcp.json','nabit-video-recommendation/skills/setup/SKILL.md','nabit-video-recommendation/skills/video-recommendation/SKILL.md',*[f'nabit-video-recommendation/skills/{name}/SKILL.md' for name in ['products','research','library','settings']],'nabit-video-recommendation/assets/nabit-logo.svg','nabit-video-recommendation/assets/nabit-mark.svg','plugin-release.json','README.md','.gitignore','scripts/validate.py','.github/workflows/validate.yml'}
 allowed.update({'nabit-video-recommendation/scripts/codex-client.mjs','nabit-video-recommendation/assets/video-widget.html','nabit-video-recommendation/skills/setup/references/continuation.md'})
 interface=manifest['extensions']['com.openai']['interface']

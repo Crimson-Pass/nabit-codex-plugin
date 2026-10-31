@@ -3,7 +3,7 @@
   "mcpServers": {
     "nabit": {
       "type": "streamable-http",
-      "url": "https://beta.nabit.ai/mcp"
+      "url": "https://nabit.ai/mcp"
     }
   }
 }
