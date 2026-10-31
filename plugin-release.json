@@ -1,12 +1,11 @@
 {
   "pluginName": "nabit-video-recommendation",
-  "latestVersion": "0.5.3",
+  "latestVersion": "0.5.4",
   "minimumSupportedVersion": "0.4.0",
   "publishedAt": "2026-10-31",
-  "summary": "Production Nabit OAuth and Streamable HTTP MCP integration (https://nabit.ai/mcp) with 33 composable product, video recommendation, research, analysis, collection, scheduling, and credit usage tools.",
+  "summary": "Production Nabit OAuth and Streamable HTTP MCP integration (https://nabit.ai/mcp) compatible with Codex CLI 0.139+ (.codex-plugin/plugin.json + .mcp.json) and 33 composable product, video recommendation, research, analysis, collection, scheduling, and credit usage tools.",
   "updateUrl": "https://nabit.ai/codex#updates",
-  "downloadUrl": "https://nabit.ai/codex/nabit-codex.zip?v=0.5.3",
-  "downloadSha256": "67337d4e77a97e5d25c1a6ed52611da43cbc63605b20cca64572d8758566c895",
+  "downloadUrl": "https://nabit.ai/codex/nabit-codex.zip?v=0.5.4",
   "requiresReauthorization": false,
   "requiresNewConversation": true,
   "distribution": "git-marketplace",
@@ -18,5 +17,6 @@
     "installCommand": "codex plugin add nabit-video-recommendation@nabit-oauth"
   },
   "automaticUpdates": false,
-  "workspaceConsentRequiredForNewCapabilities": true
+  "workspaceConsentRequiredForNewCapabilities": true,
+  "downloadSha256": "136be586c26d6ea15487ab9459a562ebdcb06585f067f19134e0c08ac7721b49"
 }

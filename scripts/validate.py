@@ -6,21 +6,24 @@ ROOT=Path(__file__).resolve().parents[1]
 def read(name):return json.loads((ROOT/name).read_text())
 catalog=read('.agents/plugins/marketplace.json')
 manifest=read('nabit-video-recommendation/plugin.json')
+codex_manifest=read('nabit-video-recommendation/.codex-plugin/plugin.json')
 release=read('plugin-release.json')
 mcp=read('nabit-video-recommendation/mcp.json')
+codex_mcp=read('nabit-video-recommendation/.mcp.json')
 assert catalog['name']=='nabit-oauth'
 assert len(catalog['plugins'])==1
 entry=catalog['plugins'][0]
-assert entry['name']==manifest['name']=='nabit-video-recommendation'
+assert entry['name']==manifest['name']==codex_manifest['name']=='nabit-video-recommendation'
 assert entry['source']=={'source':'local','path':'./nabit-video-recommendation'}
 assert entry['policy']['authentication']=='ON_INSTALL'
 assert entry['category']=='Productivity'
-assert manifest['version']==release['latestVersion']
+assert manifest['version']==codex_manifest['version']==release['latestVersion']
 assert re.fullmatch(r'\d+\.\d+\.\d+',manifest['version'])
 assert release['distribution']=='git-marketplace'
 assert release['automaticUpdates'] is False and release['requiresReauthorization'] is False
 assert mcp['mcpServers']=={'nabit':{'type':'streamable-http','url':'https://nabit.ai/mcp'}}
-allowed={'.agents/plugins/marketplace.json','nabit-video-recommendation/plugin.json','nabit-video-recommendation/mcp.json','nabit-video-recommendation/skills/setup/SKILL.md','nabit-video-recommendation/skills/video-recommendation/SKILL.md',*[f'nabit-video-recommendation/skills/{name}/SKILL.md' for name in ['products','research','library','settings']],'nabit-video-recommendation/assets/nabit-logo.svg','nabit-video-recommendation/assets/nabit-mark.svg','plugin-release.json','README.md','.gitignore','scripts/validate.py','.github/workflows/validate.yml'}
+assert codex_mcp=={'mcpServers':{'nabit':{'type':'http','url':'https://nabit.ai/mcp'}}}
+allowed={'.agents/plugins/marketplace.json','nabit-video-recommendation/plugin.json','nabit-video-recommendation/.codex-plugin/plugin.json','nabit-video-recommendation/mcp.json','nabit-video-recommendation/.mcp.json','nabit-video-recommendation/skills/setup/SKILL.md','nabit-video-recommendation/skills/video-recommendation/SKILL.md',*[f'nabit-video-recommendation/skills/{name}/SKILL.md' for name in ['products','research','library','settings']],'nabit-video-recommendation/assets/nabit-logo.svg','nabit-video-recommendation/assets/nabit-mark.svg','plugin-release.json','README.md','.gitignore','scripts/validate.py','.github/workflows/validate.yml'}
 allowed.update({'nabit-video-recommendation/scripts/codex-client.mjs','nabit-video-recommendation/assets/video-widget.html','nabit-video-recommendation/skills/setup/references/continuation.md'})
 interface=manifest['extensions']['com.openai']['interface']
 for field in ['logo','logoDark','composerIcon','composerIconDark']:

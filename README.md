@@ -1,4 +1,4 @@
-# Nabit Video Recommendations 0.5.3
+# Nabit Video Recommendations 0.5.4
 
 Six workflow skills and 33 composable MCP tools for product management, short-form video hook matching, source research, opening analysis, collections, feedback, scheduling, and credit usage — powered by [Nabit](https://nabit.ai) over remote Streamable HTTP MCP (`https://nabit.ai/mcp`) with OAuth 2.1 + PKCE. Your host agent understands the task and orchestrates the capabilities. Video production is not included.
 

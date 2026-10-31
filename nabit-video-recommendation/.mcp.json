@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "nabit": {
+      "type": "http",
+      "url": "https://nabit.ai/mcp"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "nabit-video-recommendation",
+  "version": "0.5.4",
+  "description": "Composable Nabit product, video recommendation, research, analysis and collection capabilities for host agents; uses existing product credit rules.",
+  "author": {
+    "name": "Nabit",
+    "email": "support@nabit.ai",
+    "url": "https://nabit.ai"
+  },
+  "homepage": "https://nabit.ai/codex",
+  "repository": "https://github.com/Crimson-Pass/nabit-codex-plugin",
+  "keywords": [
+    "video",
+    "recommendations",
+    "AI",
+    "Nabit"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Nabit Video Recommendations",
+    "shortDescription": "Personalized Nabit video picks",
+    "longDescription": "Use product context to find video references, manage products, run recommendation research, inspect analysis and organize collections. Your agent orchestrates Nabit skills and tools. Costs follow Nabit product pricing. Video production is not included.",
+    "developerName": "Nabit",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://nabit.ai/codex",
+    "privacyPolicyURL": "https://nabit.ai/privacy",
+    "defaultPrompt": [
+      "Use the product information in this conversation to find useful Nabit video references.",
+      "Compare these video references and save the best fit to my Nabit collection.",
+      "Show my Nabit credits and configure the product recommendation schedule I request."
+    ],
+    "logo": "./assets/nabit-logo.svg",
+    "logoDark": "./assets/nabit-mark.svg",
+    "composerIcon": "./assets/nabit-mark.svg",
+    "brandColor": "#EE2F0C",
+    "screenshots": []
+  }
+}
