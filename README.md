@@ -85,3 +85,15 @@ If the browser reports that `127.0.0.1` is unreachable after approval, check you
 Release details: https://nabit.ai/codex#updates
 
 Ordinary verified Nabit accounts can sign in at https://nabit.ai/auth and authorize their own workspace. Connecting and inspecting products do not require a paid subscription; recommendation matching uses available credits. Insufficient credits return HTTP 402 with the required/available amounts and https://nabit.ai/credits. The agent provides the link; the user completes any recharge themselves. Reading an already settled batch does not charge again.
+
+## Resources & Documentation
+
+- **[Nabit](https://nabit.ai)** — Product-first short-form video hook intelligence and creative reference matching.
+- **[Remote MCP & Codex Plugin Documentation](https://nabit.ai/codex)** — OAuth 2.1 permissions, capabilities, and release notes.
+- **[Reviewed 0–3s Video Hook Library](https://nabit.ai/hooks)** — Curated short-form openings with frame-level timestamps and psychological mechanism tags.
+- **[Free 0–3s Hook Generator & 2×2 Hook/Hold Rate Diagnostic](https://nabit.ai/tools/hook-generator)** — Browser-based hook generator and retention bottleneck calculator.
+- **[Short-Form Creative & Hook Engineering Guides](https://nabit.ai/guides)** — Actionable playbooks for DTC, SaaS, and performance creative teams.
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
