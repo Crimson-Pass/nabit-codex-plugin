@@ -5,7 +5,7 @@
   "publishedAt": "2026-10-31",
   "summary": "31 tools: retired source research removed; current-batch compatibility reads; explicit workspace consent; active trial/subscription requirement and actionable plan status.",
   "updateUrl": "https://nabit.ai/codex#updates",
-  "downloadUrl": "https://nabit.ai/codex/nabit-codex.zip?v=0.5.5",
+  "downloadUrl": "https://nabit.ai/codex/nabit-codex.zip?v=0.5.5&build=f0dd5a8",
   "requiresReauthorization": false,
   "requiresNewConversation": true,
   "distribution": "git-marketplace",
